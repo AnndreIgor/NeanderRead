@@ -16,17 +16,21 @@ instruction_set = {
 }
 
 variables = {
-    'MENOS_UM': 136,
-    'AUX_A2': 135,
-    'AUX_A': 132,
-    'AUX_N': 133,
-    'ZERO': 134,
-    'R1': 130,
+    'MENOS_UM': 255,
+    'AUX_A2': 137,
+    'AUX_A': 136,
+    'AUX_N': 135,
+    'ZERO': 254,
+    'UM': 253,
+    'R1': 132,
+    'R2': 133,
+    'N2': 131,
     'A': 128,
     'N': 129,
-    'X': 131
+    'X': 134,
+    'B': 130,
+    'R': 138
 }
-
 
 def txt_to_mem(text_file: str, instruction_set: dict, variables: dict):
     with open(text_file, 'r') as f:
@@ -69,11 +73,12 @@ def format_mem_file(text: str):
 
     return mem.astype('uint8')
 
+
 def save_mem_file(array: np.array, text_file: str):
     output_name, _ = os.path.splitext(text_file)
     array.tofile(output_name + '.mem')
 
 
 if __name__ == '__main__':
-    meu = txt_to_mem('multiplicacao.txt', instruction_set, variables)
+    meu = txt_to_mem('trabalho.txt', instruction_set, variables)
     print(meu)
